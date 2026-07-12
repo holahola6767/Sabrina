@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>¿Quieres ser mi novia? 💕</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(145deg, #fce4ec 0%, #f3e5f5 40%, #fce4ec 100%);
+            overflow: hidden;
+            position: relative;
+            padding: 20px;
+        }
+
+        /* ===== FLOATING HEARTS BACKGROUND ===== */
+        .hearts-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .heart-float {
+            position: absolute;
+            font-size: 28px;
+            opacity: 0.20;
+            animation: floatHeart 12s infinite alternate ease-in-out;
+            user-select: none;
+        }
+
+        .heart-float:nth-child(1) {
+            top: 8%;
+            left: 5%;
+            font-size: 36px;
+            animation-duration: 14s;
+            animation-delay: 0s;
+        }
+        .heart-float:nth-child(2) {
+            top: 15%;
+            right: 8%;
+            font-size: 30px;
+            animation-duration: 11s;
+            animation-delay: 1s;
+        }
+        .heart-float:nth-child(3) {
+            bottom: 20%;
+            left: 3%;
+            font-size: 42px;
+            animation-duration: 16s;
+            animation-delay: 2s;
+        }
+        .heart-float:nth-child(4) {
+            bottom: 12%;
+            right: 5%;
+            font-size: 34px;
+            animation-duration: 13s;
+            animation-delay: 0.5s;
+        }
+        .heart-float:nth-child(5) {
+            top: 45%;
+            left: 1%;
+            font-size: 26px;
+            animation-duration: 15s;
+            animation-delay: 3s;
+        }
+        .heart-float:nth-child(6) {
+            top: 50%;
+            right: 2%;
+            font-size: 32px;
+            animation-duration: 12s;
+            animation-delay: 1.5s;
+        }
+        .heart-float:nth-child(7) {
+            top: 30%;
+            left: 50%;
+            font-size: 40px;
+            animation-duration: 18s;
+            animation-delay: 0.8s;
+        }
+        .heart-float:nth-child(8) {
+            bottom: 40%;
+            left: 50%;
+            font-size: 24px;
+            animation-duration: 10s;
+            animation-delay: 2.5s;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+            25% {
+                transform: translate(30px, -40px) rotate(8deg) scale(1.1);
+            }
+            50% {
+                transform: translate(-20px, 20px) rotate(-6deg) scale(0.9);
+            }
+            75% {
+                transform: translate(40px, -10px) rotate(10deg) scale(1.05);
+            }
+            100% {
+                transform: translate(-30px, 30px) rotate(-4deg) scale(0.95);
+            }
+        }
+
+        /* ===== MAIN CARD ===== */
+        .card {
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 48px;
+            padding: 50px 50px 55px;
+            max-width: 580px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 30px 70px rgba(233, 30, 99, 0.18),
+                0 10px 30px rgba(233, 30, 99, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 40px 80px rgba(233, 30, 99, 0.22),
+                0 15px 40px rgba(233, 30, 99, 0.12);
+        }
+
+        /* ===== TITLE ===== */
+        .title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.2rem;
+            font-weight: 700;
+            color: #d81b60;
+            margin-bottom: 10px;
+            line-height: 1.2;
+            text-shadow: 0 2px 12px rgba(233, 30, 99, 0.15);
+            letter-spacing: 0.5px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #ad1457;
+            margin-bottom: 35px;
+            opacity: 0.8;
+            letter-spacing: 0.3px;
+        }
+
+        /* ===== BUTTONS CONTAINER ===== */
+        .btn-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            min-height: 100px;
+        }
+
+        /* ===== "SÍ" BUTTON ===== */
+        .btn-yes {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            padding: 16px 52px;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            background: linear-gradient(145deg, #f06292, #ec407a);
+            color: #fff;
+            box-shadow: 0 8px 26px rgba(233, 30, 99, 0.35);
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.3s ease;
+            letter-spacing: 0.5px;
+            position: relative;
+            z-index: 5;
+            flex-shrink: 0;
+        }
+
+        .btn-yes:hover {
+            transform: scale(1.06);
+            box-shadow: 0 12px 34px rgba(233, 30, 99, 0.45);
+        }
+
+        .btn-yes:active {
+            transform: scale(0.95);
+        }
+
+        /* ===== "NO" BUTTON ===== */
+        .btn-no {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            padding: 16px 44px;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            background: linear-gradient(145deg, #e57373, #ef5350);
+            color: #fff;
+            box-shadow: 0 8px 26px rgba(244, 67, 54, 0.30);
+            transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.3s ease,
+                background 0.3s ease;
+            letter-spacing: 0.5px;
+            position: relative;
+            z-index: 10;
+            flex-shrink: 0;
+        }
+
+        .btn-no:hover {
+            transform: scale(1.04);
+            box-shadow: 0 12px 34px rgba(244, 67, 54, 0.40);
+        }
+
+        /* ===== "NO" BUTTON FLOATING MODE ===== */
+        .btn-no.floating {
+            position: fixed;
+            z-index: 9999;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 12px 40px rgba(244, 67, 54, 0.45);
+            animation: popIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0.7) rotate(-6deg);
+                opacity: 0.6;
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        .btn-no.teleport {
+            animation: teleportFlash 0.25s ease;
+        }
+
+        @keyframes teleportFlash {
+            0% {
+                transform: scale(0.6) rotate(-10deg);
+                opacity: 0.4;
+            }
+            50% {
+                transform: scale(1.15) rotate(5deg);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        /* ===== MODAL ===== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.40);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            z-index: 99999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            animation: fadeInOverlay 0.5s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        @keyframes fadeInOverlay {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .modal-box {
+            background: linear-gradient(160deg, #ffffff 0%, #fce4ec 100%);
+            border-radius: 48px;
+            padding: 50px 40px 45px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 40px 90px rgba(0, 0, 0, 0.25);
+            animation: modalPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes modalPop {
+            0% {
+                transform: scale(0.7) translateY(30px);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-heart {
+            font-size: 4.8rem;
+            animation: pulseHeart 1.4s infinite alternate ease-in-out;
+            display: inline-block;
+            margin-bottom: 6px;
+        }
+
+        @keyframes pulseHeart {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.2);
+            }
+        }
+
+        .modal-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #d81b60;
+            margin: 10px 0 12px;
+            line-height: 1.2;
+        }
+
+        .modal-message {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #4a1a2c;
+            line-height: 1.7;
+            margin: 8px 0 18px;
+            padding: 0 6px;
+        }
+
+        .modal-message strong {
+            color: #d81b60;
+            font-weight: 700;
+        }
+
+        .modal-emoji-row {
+            font-size: 2.2rem;
+            letter-spacing: 8px;
+            margin: 8px 0 4px;
+            animation: floatEmojis 2.5s infinite alternate ease-in-out;
+        }
+
+        @keyframes floatEmojis {
+            0% {
+                transform: translateY(0px);
+            }
+            100% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .modal-close-btn {
+            margin-top: 24px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 12px 40px;
+            border: none;
+            border-radius: 40px;
+            background: linear-gradient(145deg, #f06292, #ec407a);
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(233, 30, 99, 0.30);
+            transition: transform 0.25s ease, box-shadow 0.3s ease;
+            letter-spacing: 0.3px;
+        }
+
+        .modal-close-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.40);
+        }
+
+        .modal-close-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* ===== MINI HEARTS INSIDE MODAL ===== */
+        .mini-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .mini-heart {
+            position: absolute;
+            font-size: 18px;
+            opacity: 0.20;
+            animation: riseHeart 6s infinite linear;
+        }
+
+        .mini-heart:nth-child(1) {
+            left: 10%;
+            animation-delay: 0s;
+            font-size: 22px;
+        }
+        .mini-heart:nth-child(2) {
+            left: 30%;
+            animation-delay: 1.2s;
+            font-size: 16px;
+        }
+        .mini-heart:nth-child(3) {
+            left: 55%;
+            animation-delay: 2.5s;
+            font-size: 20px;
+        }
+        .mini-heart:nth-child(4) {
+            left: 75%;
+            animation-delay: 0.8s;
+            font-size: 14px;
+        }
+        .mini-heart:nth-child(5) {
+            left: 90%;
+            animation-delay: 3.2s;
+            font-size: 18px;
+        }
+        .mini-heart:nth-child(6) {
+            left: 45%;
+            animation-delay: 1.8s;
+            font-size: 24px;
+        }
+        .mini-heart:nth-child(7) {
+            left: 18%;
+            animation-delay: 4s;
+            font-size: 16px;
+        }
+        .mini-heart:nth-child(8) {
+            left: 68%;
+            animation-delay: 0.4s;
+            font-size: 20px;
+        }
+
+        @keyframes riseHeart {
+            0% {
+                transform: translateY(100%) rotate(0deg) scale(0.8);
+                opacity: 0.10;
+            }
+            50% {
+                opacity: 0.30;
+            }
+            100% {
+                transform: translateY(-100%) rotate(720deg) scale(1.2);
+                opacity: 0.05;
+            }
+        }
+
+        .modal-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 640px) {
+            .card {
+                padding: 32px 22px 38px;
+                border-radius: 32px;
+            }
+
+            .title {
+                font-size: 2.4rem;
+            }
+
+            .subtitle {
+                font-size: 0.95rem;
+                margin-bottom: 28px;
+            }
+
+            .btn-yes,
+            .btn-no {
+                font-size: 1.3rem;
+                padding: 14px 32px;
+            }
+
+            .btn-wrapper {
+                gap: 18px;
+                min-height: 80px;
+            }
+
+            .modal-box {
+                padding: 36px 22px 32px;
+            }
+
+            .modal-title {
+                font-size: 2.2rem;
+            }
+
+            .modal-message {
+                font-size: 1rem;
+            }
+
+            .modal-heart {
+                font-size: 3.6rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .title {
+                font-size: 1.9rem;
+            }
+
+            .btn-yes,
+            .btn-no {
+                font-size: 1.1rem;
+                padding: 12px 24px;
+            }
+
+            .btn-wrapper {
+                gap: 12px;
+            }
+
+            .modal-box {
+                padding: 28px 16px 26px;
+            }
+
+            .modal-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* ===== UTILITY ===== */
+        .hidden {
+            display: none !important;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #f06292;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== BACKGROUND FLOATING HEARTS ===== -->
+    <div class="hearts-bg" aria-hidden="true">
+        <span class="heart-float">💕</span>
+        <span class="heart-float">💕</span>
+        <span class="heart-float">💕</span>
+        <span class="heart-float">💕</span>
+        <span class="heart-float">💕</span>
+        <span class="heart-float">💕</span>
+        <span class="heart-float">💕</span>
+        <span class="heart-float">💕</span>
+    </div>
+
+    <!-- ===== MAIN CARD ===== -->
+    <main class="card" role="main">
+        <h1 class="title">Sabrina,</h1>
+        <h1 class="title">¿quieres ser mi novia? 💕</h1>
+        <p class="subtitle">(te amo)</p>
+
+        <div class="btn-wrapper" id="btnWrapper">
+            <!-- SÍ BUTTON -->
+            <button class="btn-yes" id="yesBtn" aria-label="Sí, quiero ser tu novia">
+                ¡Sí! 💕
+            </button>
+
+            <!-- NO BUTTON -->
+            <button class="btn-no" id="noBtn" aria-label="No, no quiero">
+                No 💕
+            </button>
+        </div>
+    </main>
+
+    <!-- ===== MODAL ===== -->
+    <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-box">
+            <!-- Mini hearts decoration -->
+            <div class="mini-hearts" aria-hidden="true">
+                <span class="mini-heart">💕</span>
+                <span class="mini-heart">💕</span>
+                <span class="mini-heart">💕</span>
+                <span class="mini-heart">💕</span>
+                <span class="mini-heart">💕</span>
+                <span class="mini-heart">💕</span>
+                <span class="mini-heart">💕</span>
+                <span class="mini-heart">💕</span>
+            </div>
+
+            <div class="modal-content">
+                <div class="modal-heart" aria-hidden="true">💕</div>
+                <h2 class="modal-title" id="modalTitle">Te adoro con todo mi corazón, te haré la chica más feliz del mundo te lo prometo vida mía 💕</h2>
+                <p class="modal-message">
+                    Eres lo mejor que me ha pasado en la vida. 💕<br />
+                    Prometo hacerte feliz todos los días. <strong>Te quiero mucho.</strong>
+                </p>
+                <div class="modal-emoji-row" aria-hidden="true">
+                    💕 💕 💕 💕
+                </div>
+                <button class="modal-close-btn" id="modalCloseBtn">
+                    💕 ¡Gracias, amor!
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        (function() {
+            'use strict';
+
+            // ===== DOM REFS =====
+            const noBtn = document.getElementById('noBtn');
+            const yesBtn = document.getElementById('yesBtn');
+            const modalOverlay = document.getElementById('modalOverlay');
+            const modalCloseBtn = document.getElementById('modalCloseBtn');
+            const wrapper = document.getElementById('btnWrapper');
+
+            // ===== STATE =====
+            let isFloating = false;
+            let cooldown = false;
+            let teleportCount = 0;
+
+            // ===== HELPER: get button size =====
+            function getBtnSize() {
+                return {
+                    width: noBtn.offsetWidth || 120,
+                    height: noBtn.offsetHeight || 60,
+                };
+            }
+
+            // ===== TELEPORT "NO" BUTTON =====
+            function teleportNoButton(triggerEvent = 'click') {
+                if (cooldown) return;
+
+                if (!isFloating) {
+                    noBtn.classList.add('floating');
+                    isFloating = true;
+                }
+
+                const vw = window.innerWidth;
+                const vh = window.innerHeight;
+
+                const rect = noBtn.getBoundingClientRect();
+                const btnW = rect.width || 120;
+                const btnH = rect.height || 60;
+
+                const margin = 16;
+
+                const maxX = Math.max(0, vw - btnW - margin);
+                const maxY = Math.max(0, vh - btnH - margin);
+
+                let x = Math.random() * maxX;
+                let y = Math.random() * maxY;
+
+                noBtn.style.left = x + 'px';
+                noBtn.style.top = y + 'px';
+
+                noBtn.classList.remove('teleport');
+                void noBtn.offsetWidth;
+                noBtn.classList.add('teleport');
+
+                teleportCount++;
+
+                cooldown = true;
+                setTimeout(() => {
+                    cooldown = false;
+                }, 280);
+            }
+
+            // ===== RESET BUTTON POSITION ON WINDOW RESIZE =====
+            function handleResize() {
+                if (isFloating) {
+                    const rect = noBtn.getBoundingClientRect();
+                    const vw = window.innerWidth;
+                    const vh = window.innerHeight;
+                    const btnW = rect.width || 120;
+                    const btnH = rect.height || 60;
+                    const margin = 16;
+
+                    let x = parseFloat(noBtn.style.left) || 0;
+                    let y = parseFloat(noBtn.style.top) || 0;
+
+                    x = Math.max(margin, Math.min(x, vw - btnW - margin));
+                    y = Math.max(margin, Math.min(y, vh - btnH - margin));
+
+                    noBtn.style.left = x + 'px';
+                    noBtn.style.top = y + 'px';
+                }
+            }
+
+            // ===== SHOW MODAL =====
+            function showModal() {
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            // ===== HIDE MODAL =====
+            function hideModal() {
+                modalOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            // ===== YES BUTTON =====
+            yesBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                showModal();
+            });
+
+            // ===== NO BUTTON EVENTS =====
+            noBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                teleportNoButton('click');
+            });
+
+            noBtn.addEventListener('mouseenter', function(e) {
+                teleportNoButton('mouseenter');
+            });
+
+            noBtn.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                teleportNoButton('touchstart');
+            }, { passive: false });
+
+            // ===== MODAL CLOSE =====
+            modalCloseBtn.addEventListener('click', hideModal);
+
+            modalOverlay.addEventListener('click', function(e) {
+                if (e.target === modalOverlay) {
+                    hideModal();
+                }
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                    hideModal();
+                }
+            });
+
+            // ===== WINDOW RESIZE =====
+            let resizeTimer;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(handleResize, 150);
+            });
+
+            // ===== PREVENT DRAGGING =====
+            noBtn.addEventListener('dragstart', (e) => e.preventDefault());
+
+            console.log('💕 ¡Que comience la diversión! Haz clic en "No" si te atreves 💕');
+        })();
+    </script>
+
+</body>
+</html>
